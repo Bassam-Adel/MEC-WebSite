@@ -1,683 +1,246 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MEC 3 - صراع الشرق الأوسط 3 - Generals Zero Hour</title>
-  <script>
-    window.addEventListener('error', function(e) {
-      alert('Error: ' + e.message + '\nFile: ' + (e.filename ? e.filename.split('/').pop() : 'inline') + '\nLine: ' + e.lineno);
-    });
-  </script>
+  <!-- تحذير: أزلنا معالج الأخطاء بالـ alert() — لا يصلح في الإنتاج -->
+
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <!-- AUTH PAGES CONTAINER -->
-  <div id="auth-container" class="auth-container hidden">
-    <!-- CLOSE BUTTON -->
-    <button id="auth-close-btn" class="auth-close-btn" data-i18n-title="ui.close" title="إغلاق">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-
-    <!-- LOGGED IN PROFILE SECTION -->
-    <div id="logged-in-section" class="auth-page logged-in-section hidden">
-      <div class="auth-background">
-        <img src="https://i.ytimg.com/vi/_HLGWQMI-Ls/hqdefault.jpg" alt="Background" class="bg-image">
-        <div class="bg-overlay"></div>
-      </div>
-
-      <div class="auth-form-wrapper">
-        <div class="auth-form profile-card">
-          <div class="profile-success-message">
-            <div class="success-icon">✓</div>
-            <h2 class="success-title" data-i18n="profile.successTitle">تم التسجيل بنجاح</h2>
-            <p class="success-subtitle" data-i18n="profile.successSubtitle">مرحباً بك</p>
-          </div>
-
-          <div class="profile-info">
-            <div class="profile-picture-wrapper">
-              <img id="profile-picture" src="https://via.placeholder.com/120" alt="Profile Picture" class="profile-picture">
-            </div>
-
-            <div class="profile-details">
-              <div class="profile-item">
-                <span class="profile-label" data-i18n="profile.fullNameLabel">الاسم الكامل</span>
-                <span id="profile-fullname" class="profile-value">أحمد محمد</span>
-              </div>
-
-              <div class="profile-item">
-                <span class="profile-label" data-i18n="profile.usernameLabel">اسم المستخدم</span>
-                <span id="profile-username" class="profile-value">@FIGHTER</span>
-              </div>
-
-              <div class="profile-item">
-                <span class="profile-label" data-i18n="profile.emailLabel">البريد الإلكتروني</span>
-                <span id="profile-email" class="profile-value">fighter@example.com</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="profile-actions">
-            <button id="profile-logout-btn" class="btn btn-secondary btn-large">
-              <span data-i18n="profile.logout">تسجيل الخروج</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LOGIN PAGE -->
-    <div id="login-page" class="auth-page active">
-      <div class="auth-background">
-        <img src="https://i.ytimg.com/vi/_HLGWQMI-Ls/hqdefault.jpg" alt="Background" class="bg-image">
-        <div class="bg-overlay"></div>
-      </div>
-      
-      <div class="auth-form-wrapper">
-        <div class="auth-form">
-          <div class="auth-header">
-            <h1 class="auth-title">MEC 3</h1>
-            <p class="auth-subtitle" data-i18n="auth.subtitle">Middle East Conflict</p>
-          </div>
-
-          <form id="login-form" class="auth-form-content">
-            <div class="form-group">
-              <label for="login-email" class="form-label" data-i18n="login.emailLabel">البريد الإلكتروني</label>
-              <div class="input-wrapper" id="login-email-wrapper">
-                <input 
-                  type="text" 
-                  inputmode="email"
-                  id="login-email" 
-                  name="email" 
-                  class="form-input" 
-                  placeholder="example@email.com"
-                  autocomplete="email"
-                  pattern="[A-Za-z0-9._\-]+@[A-Za-z0-9._\-]+\.[A-Za-z]{2,}"
-                  required
-                >
-                <span class="input-validation-icon"></span>
-              </div>
-              <span class="error-message" id="login-email-error"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="login-password" class="form-label" data-i18n="login.passwordLabel">كلمة المرور</label>
-              <div class="input-wrapper" id="login-password-wrapper">
-                <input 
-                  type="password" 
-                  id="login-password" 
-                  name="password" 
-                  class="form-input" 
-                  placeholder="••••••••"
-                  autocomplete="current-password"
-                  required
-                >
-                <button type="button" class="toggle-password" data-target="login-password" title="Show password">
-                  <span class="eye-icon">👁</span>
-                </button>
-                <span class="input-validation-icon"></span>
-              </div>
-              <span class="error-message" id="login-password-error"></span>
-            </div>
-
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="login-remember" name="remember">
-              <label for="login-remember" class="checkbox-label" data-i18n="login.rememberMe">تذكرني</label>
-              <a href="#forgot-password" class="forgot-password-link" data-page="forgot-password" data-i18n="login.forgotPassword">هل نسيت كلمة المرور؟</a>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-large loading-btn" id="login-submit">
-              <span class="btn-text" data-i18n="login.submit">تسجيل الدخول</span>
-              <span class="btn-loader" style="display: none;"></span>
-            </button>
-          </form>
-
-          <div class="auth-footer">
-            <p class="auth-footer-text">
-              <span data-i18n="auth.noAccount">لا تملك حساب؟</span>
-              <a href="#register" class="auth-link" data-page="register" data-i18n="auth.joinLink">انضم إلينا</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- REGISTER PAGE -->
-    <div id="register-page" class="auth-page">
-      <div class="auth-background">
-        <img src="https://i.ytimg.com/vi/_HLGWQMI-Ls/hqdefault.jpg" alt="Background" class="bg-image">
-        <div class="bg-overlay"></div>
-      </div>
-
-      <div class="auth-form-wrapper">
-        <div class="auth-form auth-form-large">
-          <div class="auth-header">
-            <h1 class="auth-title" data-i18n="register.title">انضم إلينا</h1>
-            <p class="auth-subtitle" data-i18n="register.subtitle">إنشاء حساب جديد</p>
-          </div>
-
-          <form id="register-form" class="auth-form-content">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="register-username" class="form-label" data-i18n="register.usernameLabel">اسم المستخدم</label>
-                <div class="input-wrapper">
-                  <span class="input-prefix">@</span>
-                  <input 
-                    type="text" 
-                    id="register-username" 
-                    name="username" 
-                    class="form-input form-input-with-prefix" 
-                    placeholder="FIGHTER"
-                    maxlength="20"
-                    required
-                  >
-                  <span class="input-validation-icon"></span>
-                </div>
-                <span class="error-message" id="register-username-error"></span>
-                <span class="hint-message" id="register-username-hint"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="register-fullname" class="form-label" data-i18n="register.fullNameLabel">الاسم الكامل</label>
-                <div class="input-wrapper">
-                  <input 
-                    type="text" 
-                    id="register-fullname" 
-                    name="fullName" 
-                    class="form-input" 
-                    data-i18n-placeholder="register.fullNamePlaceholder"
-                    placeholder="أحمد محمد"
-                    required
-                  >
-                  <span class="input-validation-icon"></span>
-                </div>
-                <span class="error-message" id="register-fullname-error"></span>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="register-country" class="form-label" data-i18n="register.countryLabel">الدولة</label>
-                <select id="register-country" name="country" class="form-input form-select" required>
-                  <option value="">-- اختر --</option>
-                  <option value="Egypt" data-i18n="country.Egypt">مصر</option>
-                  <option value="Saudi Arabia" data-i18n="country.Saudi Arabia">المملكة العربية السعودية</option>
-                  <option value="United Arab Emirates" data-i18n="country.United Arab Emirates">الإمارات العربية</option>
-                  <option value="Iraq" data-i18n="country.Iraq">العراق</option>
-                  <option value="Jordan" data-i18n="country.Jordan">الأردن</option>
-                  <option value="Kuwait" data-i18n="country.Kuwait">الكويت</option>
-                  <option value="Oman" data-i18n="country.Oman">عمان</option>
-                  <option value="Bahrain" data-i18n="country.Bahrain">البحرين</option>
-                  <option value="Qatar" data-i18n="country.Qatar">قطر</option>
-                  <option value="United States" data-i18n="country.United States">الولايات المتحدة</option>
-                  <option value="United Kingdom" data-i18n="country.United Kingdom">المملكة المتحدة</option>
-                  <option value="Other" data-i18n="country.Other">أخرى</option>
-                </select>
-                <span class="error-message" id="register-country-error"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="register-email" class="form-label" data-i18n="register.emailLabel">البريد الإلكتروني</label>
-                <div class="input-wrapper">
-                  <input 
-                    type="email" 
-                    id="register-email" 
-                    name="email" 
-                    class="form-input" 
-                    placeholder="example@email.com"
-                    autocomplete="email"
-                    required
-                  >
-                  <span class="input-validation-icon"></span>
-                </div>
-                <span class="error-message" id="register-email-error"></span>
-                <span class="hint-message" id="register-email-hint"></span>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="register-phone" class="form-label" data-i18n="register.phoneLabel">رقم الهاتف</label>
-                <div class="input-wrapper">
-                  <select id="register-country-code" class="form-input form-country-code" style="width: 80px;">
-                    <option value="+20">+20 🇪🇬</option>
-                    <option value="+966">+966 🇸🇦</option>
-                    <option value="+971">+971 🇦🇪</option>
-                    <option value="+964">+964 🇮🇶</option>
-                    <option value="+962">+962 🇯🇴</option>
-                    <option value="+965">+965 🇰🇼</option>
-                    <option value="+968">+968 🇴🇲</option>
-                    <option value="+973">+973 🇧🇭</option>
-                    <option value="+974">+974 🇶🇦</option>
-                    <option value="+1">+1 🇺🇸</option>
-                    <option value="+44">+44 🇬🇧</option>
-                  </select>
-                  <input 
-                    type="tel" 
-                    id="register-phone" 
-                    name="phone" 
-                    class="form-input" 
-                    placeholder="501234567"
-                    maxlength="15"
-                    required
-                  >
-                  <span class="input-validation-icon"></span>
-                </div>
-                <span class="error-message" id="register-phone-error"></span>
-                <span class="hint-message" id="register-phone-hint"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="register-gender" class="form-label" data-i18n="register.genderLabel">النوع</label>
-                <select id="register-gender" name="gender" class="form-input form-select" required>
-                  <option value="">-- اختر --</option>
-                  <option value="Male" data-i18n="gender.Male">ذكر</option>
-                  <option value="Female" data-i18n="gender.Female">أنثى</option>
-                  <option value="Other" data-i18n="gender.Other">آخر</option>
-                </select>
-                <span class="error-message" id="register-gender-error"></span>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="register-password" class="form-label" data-i18n="register.passwordLabel">كلمة المرور</label>
-                <div class="input-wrapper">
-                  <input 
-                    type="password" 
-                    id="register-password" 
-                    name="password" 
-                    class="form-input" 
-                    placeholder="••••••••"
-                    autocomplete="new-password"
-                    required
-                  >
-                  <button type="button" class="toggle-password" data-target="register-password" title="Show password">
-                    <span class="eye-icon">👁</span>
-                  </button>
-                  <span class="input-validation-icon"></span>
-                </div>
-                <span class="error-message" id="register-password-error"></span>
-                <div class="password-strength" id="register-password-strength">
-                  <div class="strength-bar">
-                    <div class="strength-bar-inner"></div>
-                  </div>
-                  <span class="strength-text"></span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="register-confirm-password" class="form-label" data-i18n="register.confirmPasswordLabel">تأكيد كلمة المرور</label>
-                <div class="input-wrapper">
-                  <input 
-                    type="password" 
-                    id="register-confirm-password" 
-                    name="confirmPassword" 
-                    class="form-input" 
-                    placeholder="••••••••"
-                    autocomplete="new-password"
-                    required
-                  >
-                  <button type="button" class="toggle-password" data-target="register-confirm-password" title="Show password">
-                    <span class="eye-icon">👁</span>
-                  </button>
-                  <span class="input-validation-icon"></span>
-                </div>
-                <span class="error-message" id="register-confirm-password-error"></span>
-              </div>
-            </div>
-
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="register-agree-terms" name="agreeTerms" required>
-                <label for="register-agree-terms" class="checkbox-label" data-i18n="register.agreeTerms">أوافق على الشروط والأحكام</label>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-large loading-btn" id="register-submit">
-              <span class="btn-text" data-i18n="register.submit">إنشاء الحساب</span>
-              <span class="btn-loader" style="display: none;"></span>
-            </button>
-          </form>
-
-          <div class="auth-footer">
-            <p class="auth-footer-text">
-              <span data-i18n="register.haveAccount">لديك حساب بالفعل؟</span>
-              <a href="#login" class="auth-link" data-page="login" data-i18n="register.loginLink">تسجيل الدخول</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FORGOT PASSWORD PAGE -->
-    <div id="forgot-password-page" class="auth-page">
-      <div class="auth-background">
-        <img src="https://i.ytimg.com/vi/_HLGWQMI-Ls/hqdefault.jpg" alt="Background" class="bg-image">
-        <div class="bg-overlay"></div>
-      </div>
-
-      <div class="auth-form-wrapper">
-        <div class="auth-form">
-          <div class="auth-header">
-            <h1 class="auth-title" data-i18n="forgot.title">إعادة تعيين كلمة المرور</h1>
-            <p class="auth-subtitle" data-i18n="forgot.subtitle">أدخل بريدك الإلكتروني لإرسال رابط التفعيل</p>
-          </div>
-
-          <form id="forgot-password-form" class="auth-form-content">
-            <div class="form-group">
-              <label for="forgot-email" class="form-label" data-i18n="forgot.emailLabel">البريد الإلكتروني</label>
-              <div class="input-wrapper">
-                <input 
-                  type="email" 
-                  id="forgot-email" 
-                  name="email" 
-                  class="form-input" 
-                  placeholder="example@email.com"
-                  autocomplete="email"
-                  required
-                >
-                <span class="input-validation-icon"></span>
-              </div>
-              <span class="error-message" id="forgot-email-error"></span>
-              <span class="hint-message" id="forgot-email-hint"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-large loading-btn" id="forgot-submit">
-              <span class="btn-text" data-i18n="forgot.submit">إرسال الرابط</span>
-              <span class="btn-loader" style="display: none;"></span>
-            </button>
-          </form>
-
-          <div class="auth-footer">
-            <p class="auth-footer-text">
-              <span data-i18n="forgot.footer">تذكرت كلمة المرور؟</span>
-              <a href="#login" class="auth-link" data-page="login" data-i18n="forgot.loginLink">تسجيل الدخول</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ALERT MODAL -->
-    <div id="alert-modal" class="modal hidden">
-      <div class="modal-content modal-alert">
-        <div class="modal-header">
-          <h3 id="alert-title" class="modal-title"></h3>
-        </div>
-        <div class="modal-body">
-          <p id="alert-message"></p>
-        </div>
-        <div class="modal-footer">
-          <button id="alert-close" class="btn btn-secondary" data-i18n="ui.ok">حسناً</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- SUCCESS MODAL -->
-    <div id="success-modal" class="modal hidden">
-      <div class="modal-content modal-success">
-        <div class="modal-header">
-          <h3 id="success-title" class="modal-title"></h3>
-        </div>
-        <div class="modal-body">
-          <p id="success-message"></p>
-          <div class="success-icon">✓</div>
-        </div>
-        <div class="modal-footer">
-          <button id="success-close" class="btn btn-primary" data-i18n="ui.ok">حسناً</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- MAIN CONTENT -->
   <div id="main-content">
-  <div class="language-modal" id="language-modal" aria-hidden="true">
-    <div class="language-panel" role="dialog" aria-modal="true">
-      <h2 data-i18n="langModal.title">اختر لغتك</h2>
-      <p data-i18n="langModal.subtitle">اختر اللغة التي تناسبك الآن. سيتم حفظ الخيار لزياراتك القادمة.</p>
-      <div class="language-options">
-        <button class="lang-option" data-lang="ar">
-          <span>العربية</span>
-          <small>Arabic</small>
-        </button>
-        <button class="lang-option" data-lang="en">
-          <span>English</span>
-          <small>English</small>
-        </button>
-        <button class="lang-option" data-lang="ru">
-          <span>Русский</span>
-          <small>Russian</small>
-        </button>
+    <div class="language-modal" id="language-modal" aria-hidden="true">
+      <div class="language-panel" role="dialog" aria-modal="true">
+        <h2 data-i18n="langModal.title">اختر لغتك</h2>
+        <p data-i18n="langModal.subtitle">اختر اللغة التي تناسبك الآن. سيتم حفظ الخيار لزياراتك القادمة.</p>
+        <div class="language-options">
+          <button class="lang-option" data-lang="ar">
+            <span>العربية</span>
+            <small>Arabic</small>
+          </button>
+          <button class="lang-option" data-lang="en">
+            <span>English</span>
+            <small>English</small>
+          </button>
+          <button class="lang-option" data-lang="ru">
+            <span>Русский</span>
+            <small>Russian</small>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#home" data-i18n="brand">صراع الشرق الأوسط 3</a>
-      <nav class="site-nav">
-        <a href="#features" data-i18n="nav.features">ميزات المود</a>
-        <a href="#releases" data-i18n="nav.releases">سجل الإصدار</a>
-        <a href="#process" data-i18n="nav.process">طريقة التثبيت</a>
-        <a href="#cta" data-i18n="nav.cta">تحميل الآن</a>
-      </nav>
-      <div class="header-actions">
-        <!-- Auth Buttons (visible when not logged in) -->
-        <div id="auth-buttons-group" class="auth-buttons-group">
-          <button id="header-login-btn" class="btn-header-auth btn-header-login" data-i18n="auth.login">
-            تسجيل الدخول
-          </button>
-          <button id="header-register-btn" class="btn-header-auth btn-header-register" data-i18n="auth.register">
-            إنشاء حساب
-          </button>
-        </div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#home" data-i18n="brand">صراع الشرق الأوسط 3</a>
+        <nav class="site-nav">
+          <a href="#features" data-i18n="nav.features">ميزات المود</a>
+          <a href="#releases" data-i18n="nav.releases">سجل الإصدار</a>
+          <a href="#process" data-i18n="nav.process">طريقة التثبيت</a>
+          <a href="#cta" data-i18n="nav.cta">تحميل الآن</a>
+        </nav>
+        <div class="header-actions">
 
-        <!-- User Profile Section (visible when logged in) -->
-        <div id="user-profile-section" class="user-profile-section hidden">
-          <div class="user-profile-info">
-            <img id="header-profile-picture" src="" alt="Profile" class="header-profile-picture">
-            <div class="user-info">
-              <div id="header-user-name" class="user-name">User Name</div>
-              <div id="header-user-username" class="user-username">@USERNAME</div>
+          <label class="language-label" for="lang-toggle" data-i18n="language.label">اللغة</label>
+          <!-- Hidden native select kept for accessibility and form fallback -->
+          <select id="lang-selector" aria-label="Select language"
+            style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
+            <option value="ar">العربية</option>
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+          </select>
+
+          <!-- Custom glassy language selector -->
+          <div class="lang-select" id="lang-select">
+            <button id="lang-toggle" class="lang-toggle" aria-haspopup="listbox" aria-expanded="false">
+              <span id="lang-toggle-label">العربية</span>
+              <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="language-dropdown" id="language-dropdown" role="listbox" tabindex="-1" aria-hidden="true">
+              <button class="lang-option" data-lang="ar" role="option">العربية <small>Arabic</small></button>
+              <button class="lang-option" data-lang="en" role="option">English <small>English</small></button>
+              <button class="lang-option" data-lang="ru" role="option">Русский <small>Russian</small></button>
             </div>
           </div>
-          <button id="header-logout-btn" class="btn-logout" data-i18n-title="profile.logout" title="تسجيل الخروج">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14v2H5v14h14v-2h2v2a2 2 0 0 1-2 2z"/><polyline points="17 16 21 12 17 8"/><line x1="21" y1="12" x2="9" y2="12"/>
-            </svg>
-          </button>
+          <button class="menu-toggle" aria-label="قائمة التنقل">☰</button>
         </div>
-
-        <label class="language-label" for="lang-toggle" data-i18n="language.label">اللغة</label>
-        <!-- Hidden native select kept for accessibility and form fallback -->
-        <select id="lang-selector" aria-label="Select language" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
-          <option value="ar">العربية</option>
-          <option value="en">English</option>
-          <option value="ru">Русский</option>
-        </select>
-
-        <!-- Custom glassy language selector -->
-        <div class="lang-select" id="lang-select">
-          <button id="lang-toggle" class="lang-toggle" aria-haspopup="listbox" aria-expanded="false">
-            <span id="lang-toggle-label">العربية</span>
-            <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="language-dropdown" id="language-dropdown" role="listbox" tabindex="-1" aria-hidden="true">
-            <button class="lang-option" data-lang="ar" role="option">العربية <small>Arabic</small></button>
-            <button class="lang-option" data-lang="en" role="option">English <small>English</small></button>
-            <button class="lang-option" data-lang="ru" role="option">Русский <small>Russian</small></button>
-          </div>
-        </div>
-        <button class="menu-toggle" aria-label="قائمة التنقل">☰</button>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-bg">
-        <span class="blob blob-1"></span>
-        <span class="blob blob-2"></span>
-        <span class="blob blob-3"></span>
-      </div>
-      <div class="container hero-grid">
-        <div class="hero-copy" data-reveal>
-          <p class="eyebrow" data-i18n="hero.eyebrow">مود جنرال زيرو أور</p>
-          <h1 data-i18n="hero.title">تحميل مود صراع الشرق الأوسط 3</h1>
-          <p data-i18n="hero.description">أقوى مود عربي لجنرال زيرو أور مع خرائط جديدة، فرق متوازنة، ووحدات حربية مميزة.</p>
-          <ul class="hero-list">
-            <li data-i18n="hero.bullet1">محتوى عربي كامل ومناسب</li>
-            <li data-i18n="hero.bullet2">توافق تام مع النسخة الأصلية</li>
-            <li data-i18n="hero.bullet3">تنصيب بسيط بخطوات واضحة</li>
-          </ul>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#cta" data-i18n="hero.primary">تحميل المود</a>
-            <a class="btn btn-secondary" href="#preview" data-i18n="hero.secondary">شاهد المميزات</a>
-          </div>
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-bg">
+          <span class="blob blob-1"></span>
+          <span class="blob blob-2"></span>
+          <span class="blob blob-3"></span>
         </div>
-        <div class="hero-visual" data-reveal>
-          <div class="hero-screen">
-            <div class="screen-header">
-              <span class="screen-dot"></span>
-              <span class="screen-dot dot-yellow"></span>
-              <span class="screen-dot dot-green"></span>
+        <div class="container hero-grid">
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow" data-i18n="hero.eyebrow">مود جنرال زيرو أور</p>
+            <h1 data-i18n="hero.title">تحميل مود صراع الشرق الأوسط 3</h1>
+            <p data-i18n="hero.description">أقوى مود عربي لجنرال زيرو أور مع خرائط جديدة، فرق متوازنة، ووحدات حربية
+              مميزة.</p>
+            <ul class="hero-list">
+              <li data-i18n="hero.bullet1">محتوى عربي كامل ومناسب</li>
+              <li data-i18n="hero.bullet2">توافق تام مع النسخة الأصلية</li>
+              <li data-i18n="hero.bullet3">تنصيب بسيط بخطوات واضحة</li>
+            </ul>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#cta" data-i18n="hero.primary">تحميل المود</a>
+              <a class="btn btn-secondary" href="#preview" data-i18n="hero.secondary">شاهد المميزات</a>
             </div>
-            <div class="screen-body">
-              <p class="card-tag" data-i18n="hero.cardTag">مود عربي</p>
-              <h2 data-i18n="hero.screenTitle">خرائط جديدة ووحدات محدثة</h2>
-              <p data-i18n="hero.screenDescription">تجربة قتالية جديدة مع معارك الشرق الأوسط، تجهيزات متوازنة وتحسينات للفريق.</p>
-              <div class="screen-features">
-                <span data-i18n="hero.featureTag1">خرائط عربية</span>
-                <span data-i18n="hero.featureTag2">وحدات جديدة</span>
-                <span data-i18n="hero.featureTag3">تحسين التوازن</span>
+          </div>
+          <div class="hero-visual" data-reveal>
+            <div class="hero-screen">
+              <div class="screen-header">
+                <span class="screen-dot"></span>
+                <span class="screen-dot dot-yellow"></span>
+                <span class="screen-dot dot-green"></span>
               </div>
-              <div class="screen-stats">
-                <div><strong data-i18n="hero.stat1.value">15+</strong> <span data-i18n="hero.stat1.label">خريطة جديدة</span></div>
-                <div><strong data-i18n="hero.stat2.value">8</strong> <span data-i18n="hero.stat2.label">فصائل مميزة</span></div>
-                <div><strong data-i18n="hero.stat3.value">100%</strong> <span data-i18n="hero.stat3.label">توافق ZH</span></div>
+              <div class="screen-body">
+                <p class="card-tag" data-i18n="hero.cardTag">مود عربي</p>
+                <h2 data-i18n="hero.screenTitle">خرائط جديدة ووحدات محدثة</h2>
+                <p data-i18n="hero.screenDescription">تجربة قتالية جديدة مع معارك الشرق الأوسط، تجهيزات متوازنة وتحسينات
+                  للفريق.</p>
+                <div class="screen-features">
+                  <span data-i18n="hero.featureTag1">خرائط عربية</span>
+                  <span data-i18n="hero.featureTag2">وحدات جديدة</span>
+                  <span data-i18n="hero.featureTag3">تحسين التوازن</span>
+                </div>
+                <div class="screen-stats">
+                  <div><strong data-i18n="hero.stat1.value">15+</strong> <span data-i18n="hero.stat1.label">خريطة
+                      جديدة</span></div>
+                  <div><strong data-i18n="hero.stat2.value">8</strong> <span data-i18n="hero.stat2.label">فصائل
+                      مميزة</span></div>
+                  <div><strong data-i18n="hero.stat3.value">100%</strong> <span data-i18n="hero.stat3.label">توافق
+                      ZH</span></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section section-preview" id="preview">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-i18n="preview.title">لمحة عن المود</h2>
-          <p data-i18n="preview.desc">مود صراع الشرق الأوسط 3 يعيد بناء تجربة اللعب في جنرال زيرو أور بعناصر جديدة ومحتوى عربي أصلي.</p>
-        </div>
-        <div class="features-grid">
-          <article class="feature-card" data-reveal>
-            <h3 data-i18n="preview.feature1.title">فصائل عربية مميزة</h3>
-            <p data-i18n="preview.feature1.desc">وحدات جديدة مثل المدرعات الخفيفة، مدفعية الصحراء، والدعم الجوي الموجه.</p>
-          </article>
-          <article class="feature-card" data-reveal>
-            <h3 data-i18n="preview.feature2.title">خرائط قتالية</h3>
-            <p data-i18n="preview.feature2.desc">خرائط تصميمها عربي لقتال المدن، القفار، وقواعد العدو المتطورة.</p>
-          </article>
-          <article class="feature-card" data-reveal>
-            <h3 data-i18n="preview.feature3.title">تحديثات توازن</h3>
-            <p data-i18n="preview.feature3.desc">تحسين قدرات الجنرالات وأساليب اللعب للحصول على معارك عادلة وسريعة.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="features">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-i18n="features.title">ميزات مود صراع الشرق الأوسط 3</h2>
-          <p data-i18n="features.desc">تحميل مجاني لأقوى مود جنرال زيرو أور مع تحسينات قتالية عربية.</p>
-        </div>
-        <div class="features-grid">
-          <article class="feature-card" data-reveal>
-            <h3 data-i18n="features.feature1.title">خرائط جديدة</h3>
-            <p data-i18n="features.feature1.desc">خرائط عربية متوازنة لأحجام مختلفة من المعارك والقوات.</p>
-          </article>
-          <article class="feature-card" data-reveal>
-            <h3 data-i18n="features.feature2.title">وحدات متطورة</h3>
-            <p data-i18n="features.feature2.desc">تشكيلة وحدات حربية جديدة ومعدلة تعكس طابع الشرق الأوسط.</p>
-          </article>
-          <article class="feature-card" data-reveal>
-            <h3 data-i18n="features.feature3.title">توازن لعب</h3>
-            <p data-i18n="features.feature3.desc">تعديلات لكل الجنرالات لضمان معارك عادلة وممتعة.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="releases">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-i18n="release.title">سجل الإصدار</h2>
-          <p data-i18n="release.desc">جميع إصدارات المود مع تفاصيل الإضافات والتصحيحات لكل إصدار.</p>
-        </div>
-        <div class="release-list" id="release-list"></div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="process">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-i18n="process.title">طريقة التثبيت</h2>
-          <p data-i18n="process.desc">اتبع الخطوات البسيطة لتشغيل المود على لعبة Generals Zero Hour.</p>
-        </div>
-        <div class="steps-grid">
-          <div class="step-card" data-reveal>
-            <span>1</span>
-            <h3 data-i18n="process.step1.title">تحميل المود</h3>
-            <p data-i18n="process.step1.desc">اضغط زر التحميل لتحصل على ملف المضغوط للمود.</p>
+      <section class="section section-preview" id="preview">
+        <div class="container">
+          <div class="section-title">
+            <h2 data-i18n="preview.title">لمحة عن المود</h2>
+            <p data-i18n="preview.desc">مود صراع الشرق الأوسط 3 يعيد بناء تجربة اللعب في جنرال زيرو أور بعناصر جديدة
+              ومحتوى عربي أصلي.</p>
           </div>
-          <div class="step-card" data-reveal>
-            <span>2</span>
-            <h3 data-i18n="process.step2.title">فك الضغط</h3>
-            <p data-i18n="process.step2.desc">افتح الملف وانقل محتوى المود إلى مجلد اللعبة.</p>
-          </div>
-          <div class="step-card" data-reveal>
-            <span>3</span>
-            <h3 data-i18n="process.step3.title">ابدأ اللعب</h3>
-            <p data-i18n="process.step3.desc">شغّل Generals Zero Hour واستمتع بالخرائط والوحدات الجديدة.</p>
+          <div class="features-grid">
+            <article class="feature-card" data-reveal>
+              <h3 data-i18n="preview.feature1.title">فصائل عربية مميزة</h3>
+              <p data-i18n="preview.feature1.desc">وحدات جديدة مثل المدرعات الخفيفة، مدفعية الصحراء، والدعم الجوي
+                الموجه.</p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <h3 data-i18n="preview.feature2.title">خرائط قتالية</h3>
+              <p data-i18n="preview.feature2.desc">خرائط تصميمها عربي لقتال المدن، القفار، وقواعد العدو المتطورة.</p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <h3 data-i18n="preview.feature3.title">تحديثات توازن</h3>
+              <p data-i18n="preview.feature3.desc">تحسين قدرات الجنرالات وأساليب اللعب للحصول على معارك عادلة وسريعة.
+              </p>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="cta">
-      <div class="container cta-card" data-reveal>
-        <div>
-          <h2 data-i18n="cta.title">حمل مود صراع الشرق الأوسط 3 الآن</h2>
-          <p data-i18n="cta.desc">نقرات قليلة وتصبح جاهز للعب بأقوى مود عربي لجنرال زيرو أور.</p>
+      <section class="section" id="features">
+        <div class="container">
+          <div class="section-title">
+            <h2 data-i18n="features.title">ميزات مود صراع الشرق الأوسط 3</h2>
+            <p data-i18n="features.desc">تحميل مجاني لأقوى مود جنرال زيرو أور مع تحسينات قتالية عربية.</p>
+          </div>
+          <div class="features-grid">
+            <article class="feature-card" data-reveal>
+              <h3 data-i18n="features.feature1.title">خرائط جديدة</h3>
+              <p data-i18n="features.feature1.desc">خرائط عربية متوازنة لأحجام مختلفة من المعارك والقوات.</p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <h3 data-i18n="features.feature2.title">وحدات متطورة</h3>
+              <p data-i18n="features.feature2.desc">تشكيلة وحدات حربية جديدة ومعدلة تعكس طابع الشرق الأوسط.</p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <h3 data-i18n="features.feature3.title">توازن لعب</h3>
+              <p data-i18n="features.feature3.desc">تعديلات لكل الجنرالات لضمان معارك عادلة وممتعة.</p>
+            </article>
+          </div>
         </div>
-        <a class="btn btn-primary" href="download.zip" download="sira3-alsharq-alawsat-3.zip" data-i18n="cta.button">تحميل المود</a>
+      </section>
+
+      <section class="section section-alt" id="releases">
+        <div class="container">
+          <div class="section-title">
+            <h2 data-i18n="release.title">سجل الإصدار</h2>
+            <p data-i18n="release.desc">جميع إصدارات المود مع تفاصيل الإضافات والتصحيحات لكل إصدار.</p>
+          </div>
+          <div class="release-list" id="release-list"></div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="process">
+        <div class="container">
+          <div class="section-title">
+            <h2 data-i18n="process.title">طريقة التثبيت</h2>
+            <p data-i18n="process.desc">اتبع الخطوات البسيطة لتشغيل المود على لعبة Generals Zero Hour.</p>
+          </div>
+          <div class="steps-grid">
+            <div class="step-card" data-reveal>
+              <span>1</span>
+              <h3 data-i18n="process.step1.title">تحميل المود</h3>
+              <p data-i18n="process.step1.desc">اضغط زر التحميل لتحصل على ملف المضغوط للمود.</p>
+            </div>
+            <div class="step-card" data-reveal>
+              <span>2</span>
+              <h3 data-i18n="process.step2.title">فك الضغط</h3>
+              <p data-i18n="process.step2.desc">افتح الملف وانقل محتوى المود إلى مجلد اللعبة.</p>
+            </div>
+            <div class="step-card" data-reveal>
+              <span>3</span>
+              <h3 data-i18n="process.step3.title">ابدأ اللعب</h3>
+              <p data-i18n="process.step3.desc">شغّل Generals Zero Hour واستمتع بالخرائط والوحدات الجديدة.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="cta">
+        <div class="container cta-card" data-reveal>
+          <div>
+            <h2 data-i18n="cta.title">حمل مود صراع الشرق الأوسط 3 الآن</h2>
+            <p data-i18n="cta.desc">نقرات قليلة وتصبح جاهز للعب بأقوى مود عربي لجنرال زيرو أور.</p>
+          </div>
+          <a class="btn btn-primary" href="download.zip" download="sira3-alsharq-alawsat-3.zip"
+            data-i18n="cta.button">تحميل المود</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-copyright" style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; text-align: center; padding: 20px 0;">
+          <img src="decode_logo.png" alt="DeCode Logo" style="height: 40px; opacity: 0.8;">
+          <p style="margin: 0; font-size: 1rem; color: #a0aec0;">جميع الحقوق محفوظة لـ دي كود | DeCode 2026 &copy;</p>
+          <img src="bass_patch.png" alt="Bass Patch Logo" style="height: 40px; opacity: 0.8;">
+        </div>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p data-i18n="footer.text">مود صراع الشرق الأوسط 3 للعبة Generals Zero Hour.</p>
-      <a href="mailto:contact@example.com" data-i18n="footer.email">support@example.com</a>
-    </div>
-  </footer>
-
-  <!-- Firebase Configuration -->
-  <script src="firebase-config.js"></script>
-  
-  <!-- Firebase Auth Manager -->
-  <script src="firebase-auth.js"></script>
-  
-  <!-- Authentication System -->
-  <script src="auth.js"></script>
-  
-  <!-- Main Script -->
-  <script src="script.js"></script>
+    <!-- Main Script -->
+    <script src="script.js"></script>
 </body>
+
 </html>

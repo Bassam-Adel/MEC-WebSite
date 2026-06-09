@@ -67,69 +67,7 @@ const translations = {
     'footer.email': 'support@example.com',
     'langModal.title': 'اختر لغتك',
     'langModal.subtitle': 'اختر اللغة التي تناسبك الآن. سيتم حفظ الخيار لزياراتك القادمة.'
-      ,
-      'auth.login': 'تسجيل الدخول',
-      'auth.register': 'إنشاء حساب'
-      ,
-      'profile.successTitle': 'تم التسجيل بنجاح',
-      'profile.successSubtitle': 'مرحباً بك',
-      'profile.fullNameLabel': 'الاسم الكامل',
-      'profile.usernameLabel': 'اسم المستخدم',
-      'profile.emailLabel': 'البريد الإلكتروني',
-
-      'auth.subtitle': 'صراع الشرق الأوسط',
-      'login.emailLabel': 'البريد الإلكتروني',
-      'login.passwordLabel': 'كلمة المرور',
-      'login.rememberMe': 'تذكرني',
-      'login.forgotPassword': 'هل نسيت كلمة المرور؟',
-      'login.submit': 'تسجيل الدخول',
-      'auth.noAccount': 'لا تملك حساب؟',
-      'auth.joinLink': 'انضم إلينا',
-
-      'register.title': 'انضم إلينا',
-      'register.subtitle': 'إنشاء حساب جديد',
-      'register.usernameLabel': 'اسم المستخدم',
-      'register.fullNameLabel': 'الاسم الكامل',
-      'register.fullNamePlaceholder': 'أحمد محمد',
-      'register.countryLabel': 'الدولة',
-      'register.emailLabel': 'البريد الإلكتروني',
-      'register.phoneLabel': 'رقم الهاتف',
-      'register.genderLabel': 'النوع',
-      'register.passwordLabel': 'كلمة المرور',
-      'register.confirmPasswordLabel': 'تأكيد كلمة المرور',
-      'register.agreeTerms': 'أوافق على الشروط والأحكام',
-      'register.submit': 'إنشاء الحساب',
-      'register.haveAccount': 'لديك حساب بالفعل؟',
-      'register.loginLink': 'تسجيل الدخول',
-
-      'forgot.title': 'إعادة تعيين كلمة المرور',
-      'forgot.subtitle': 'أدخل بريدك الإلكتروني لإرسال رابط التفعيل',
-      'forgot.emailLabel': 'البريد الإلكتروني',
-      'forgot.submit': 'إرسال الرابط',
-        'forgot.footer': 'تذكرت كلمة المرور؟',
-        'forgot.loginLink': 'تسجيل الدخول',
-        // UI strings
-        'ui.close': 'إغلاق',
-        'ui.ok': 'حسناً',
-        'profile.logout': 'تسجيل الخروج',
-        // Countries
-        'country.Egypt': 'مصر',
-        'country.Saudi Arabia': 'المملكة العربية السعودية',
-        'country.United Arab Emirates': 'الإمارات العربية',
-        'country.Iraq': 'العراق',
-        'country.Jordan': 'الأردن',
-        'country.Kuwait': 'الكويت',
-        'country.Oman': 'عمان',
-        'country.Bahrain': 'البحرين',
-        'country.Qatar': 'قطر',
-        'country.United States': 'الولايات المتحدة',
-        'country.United Kingdom': 'المملكة المتحدة',
-        'country.Other': 'أخرى',
-        // Gender
-        'gender.Male': 'ذكر',
-        'gender.Female': 'أنثى',
-        'gender.Other': 'آخر'
-      },
+  },
   en: {
     brand: 'Middle East Conflict 3',
     'nav.features': 'Mod Features',
@@ -190,68 +128,6 @@ const translations = {
     'footer.email': 'support@example.com',
     'langModal.title': 'Choose your language',
     'langModal.subtitle': 'Pick the language you prefer. Your choice will be remembered for future visits.'
-    ,
-    'auth.login': 'Login',
-    'auth.register': 'Register'
-    ,
-    'profile.successTitle': 'Login Successful',
-    'profile.successSubtitle': 'Welcome back',
-    'profile.fullNameLabel': 'Full Name',
-    'profile.usernameLabel': 'Username',
-    'profile.emailLabel': 'Email',
-
-    'auth.subtitle': 'Middle East Conflict',
-    'login.emailLabel': 'Email',
-    'login.passwordLabel': 'Password',
-    'login.rememberMe': 'Remember Me',
-    'login.forgotPassword': 'Forgot Password?',
-    'login.submit': 'LOGIN',
-    'auth.noAccount': "New Fighter?",
-    'auth.joinLink': 'Join Us',
-
-    'register.title': 'Join The Force',
-    'register.subtitle': 'Create a new profile',
-    'register.usernameLabel': 'Username',
-    'register.fullNameLabel': 'Full Name',
-    'register.fullNamePlaceholder': 'Ahmed Mohammed',
-    'register.countryLabel': 'Country',
-    'register.emailLabel': 'Email',
-    'register.phoneLabel': 'Phone',
-    'register.genderLabel': 'Gender',
-    'register.passwordLabel': 'Password',
-    'register.confirmPasswordLabel': 'Confirm Password',
-    'register.agreeTerms': 'I agree to Terms & Conditions',
-    'register.submit': 'CREATE ACCOUNT',
-    'register.haveAccount': 'Already have an account?',
-    'register.loginLink': 'Login',
-
-    'forgot.title': 'RESET PASSWORD',
-    'forgot.subtitle': 'Enter email to receive reset link',
-    'forgot.emailLabel': 'Email Address',
-    'forgot.submit': 'SEND LINK',
-    'forgot.footer': 'Remembered your password?',
-    'forgot.loginLink': 'Login',
-    // UI strings
-    'ui.close': 'Close',
-    'ui.ok': 'OK',
-    'profile.logout': 'Logout',
-    // Countries
-    'country.Egypt': 'Egypt',
-    'country.Saudi Arabia': 'Saudi Arabia',
-    'country.United Arab Emirates': 'United Arab Emirates',
-    'country.Iraq': 'Iraq',
-    'country.Jordan': 'Jordan',
-    'country.Kuwait': 'Kuwait',
-    'country.Oman': 'Oman',
-    'country.Bahrain': 'Bahrain',
-    'country.Qatar': 'Qatar',
-    'country.United States': 'United States',
-    'country.United Kingdom': 'United Kingdom',
-    'country.Other': 'Other',
-    // Gender
-    'gender.Male': 'Male',
-    'gender.Female': 'Female',
-    'gender.Other': 'Other'
   },
   ru: {
     brand: 'Ближний Восток Конфликт 3',
@@ -313,30 +189,6 @@ const translations = {
     'footer.email': 'support@example.com',
     'langModal.title': 'Выберите язык',
     'langModal.subtitle': 'Выберите предпочитаемый язык. Ваш выбор будет сохранен для будущих визитов.'
-    ,
-    'auth.login': 'Вход',
-    'auth.register': 'Регистрация',
-    // UI strings
-    'ui.close': 'Закрыть',
-    'ui.ok': 'ОК',
-    'profile.logout': 'Выйти',
-    // Countries (RU)
-    'country.Egypt': 'Египет',
-    'country.Saudi Arabia': 'Саудовская Аравия',
-    'country.United Arab Emirates': 'ОАЭ',
-    'country.Iraq': 'Ирак',
-    'country.Jordan': 'Иордания',
-    'country.Kuwait': 'Кувейт',
-    'country.Oman': 'Оман',
-    'country.Bahrain': 'Бахрейн',
-    'country.Qatar': 'Катар',
-    'country.United States': 'США',
-    'country.United Kingdom': 'Великобритания',
-    'country.Other': 'Другое',
-    // Gender
-    'gender.Male': 'Муж',
-    'gender.Female': 'Жен',
-    'gender.Other': 'Другое'
   }
 };
 
@@ -546,9 +398,9 @@ function setLanguage(lang, save = true) {
   }
 }
 
+// saveLanguageSelection هي مجرد alias لـ setLanguage مع الحفظ الافتراضي
 function saveLanguageSelection(lang) {
-  setLanguage(lang);
-  localStorage.setItem('siteLanguage', lang);
+  setLanguage(lang); // setLanguage تحفظ في localStorage داخلياً
 }
 
 function openLanguageModal() {
