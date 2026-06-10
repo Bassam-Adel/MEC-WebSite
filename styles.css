@@ -869,11 +869,79 @@ body.ltr .site-nav {
   border-color: rgba(108, 92, 231, 0.32);
 }
 
-.release-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
+.releases-slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
   margin-top: 2rem;
+}
+
+.releases-slider-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.release-list {
+  display: flex;
+  gap: 1.5rem;
+  transition: transform 0.4s ease-in-out;
+}
+
+.release-list > .release-card {
+  flex: 0 0 calc(33.333% - 1rem);
+  min-width: 300px;
+}
+
+.slider-control {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.slider-control:hover {
+  background: rgba(68, 233, 255, 0.3);
+  box-shadow: 0 0 10px rgba(68, 233, 255, 0.5);
+}
+
+.prev-slide {
+  margin-right: -20px;
+}
+
+.next-slide {
+  margin-left: -20px;
+}
+
+@media (max-width: 992px) {
+  .release-list > .release-card {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .release-list > .release-card {
+    flex: 0 0 100%;
+    min-width: unset;
+  }
+  .slider-control {
+    display: none; /* Hide buttons on small screens, rely on touch scroll later if needed or add simpler navigation */
+  }
+  .releases-slider-container {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  .release-list > .release-card {
+    scroll-snap-align: center;
+  }
 }
 
 .release-head {

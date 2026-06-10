@@ -610,6 +610,10 @@ function renderReleaseCards(lang) {
   document.querySelectorAll('#release-list [data-reveal]').forEach((element) => {
     revealObserver.observe(element);
   });
+  
+  // Reset slider position on language change
+  releaseList.style.transform = 'translateX(0)';
+  window.releaseSliderIndex = 0;
 }
 
 function setLanguage(lang, save = true) {
@@ -706,4 +710,48 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   document.querySelectorAll('[data-reveal]').forEach((element) => revealObserver.observe(element));
+  initReleaseSlider();
 });
+
+function initReleaseSlider() {
+  const track = document.getElementById('release-list');
+  const prevBtn = document.querySelector('.prev-slide');
+  const nextBtn = document.querySelector('.next-slide');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  window.releaseSliderIndex = 0;
+
+  function updateSlider() {
+    const cards = track.querySelectorAll('.release-card');
+    if (cards.length === 0) return;
+    const cardWidth = cards[0].offsetWidth;
+    const gap = 24; // 1.5rem = 24px
+    const moveAmount = cardWidth + gap;
+    
+    // Check direction based on html lang attribute (RTL support)
+    const isRTL = document.documentElement.dir === 'rtl';
+    const directionMultiplier = isRTL ? 1 : -1;
+
+    track.style.transform = `translateX(${window.releaseSliderIndex * moveAmount * directionMultiplier}px)`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (window.releaseSliderIndex > 0) {
+      window.releaseSliderIndex--;
+      updateSlider();
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const cards = track.querySelectorAll('.release-card');
+    // Assume 3 cards fit in normal view, adjust max index
+    const visibleCards = window.innerWidth <= 768 ? 1 : window.innerWidth <= 992 ? 2 : 3;
+    const maxIndex = Math.max(0, cards.length - visibleCards);
+    if (window.releaseSliderIndex < maxIndex) {
+      window.releaseSliderIndex++;
+      updateSlider();
+    }
+  });
+
+  window.addEventListener('resize', updateSlider);
+}
