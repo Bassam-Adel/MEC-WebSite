@@ -728,7 +728,6 @@ function initReleaseSlider() {
     const gap = 24; // 1.5rem = 24px
     const moveAmount = cardWidth + gap;
     
-    // Check direction based on html lang attribute (RTL support)
     const isRTL = document.documentElement.dir === 'rtl';
     const directionMultiplier = isRTL ? 1 : -1;
 
@@ -736,21 +735,29 @@ function initReleaseSlider() {
   }
 
   prevBtn.addEventListener('click', () => {
+    const cards = track.querySelectorAll('.release-card');
+    const visibleCards = window.innerWidth <= 768 ? 1 : window.innerWidth <= 992 ? 2 : 3;
+    const maxIndex = Math.max(0, cards.length - visibleCards);
+
     if (window.releaseSliderIndex > 0) {
       window.releaseSliderIndex--;
-      updateSlider();
+    } else {
+      window.releaseSliderIndex = maxIndex; // loop to end
     }
+    updateSlider();
   });
 
   nextBtn.addEventListener('click', () => {
     const cards = track.querySelectorAll('.release-card');
-    // Assume 3 cards fit in normal view, adjust max index
     const visibleCards = window.innerWidth <= 768 ? 1 : window.innerWidth <= 992 ? 2 : 3;
     const maxIndex = Math.max(0, cards.length - visibleCards);
+
     if (window.releaseSliderIndex < maxIndex) {
       window.releaseSliderIndex++;
-      updateSlider();
+    } else {
+      window.releaseSliderIndex = 0; // loop to start
     }
+    updateSlider();
   });
 
   window.addEventListener('resize', updateSlider);

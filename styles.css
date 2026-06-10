@@ -873,6 +873,7 @@ body.ltr .site-nav {
   position: relative;
   display: flex;
   align-items: center;
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
@@ -914,11 +915,11 @@ body.ltr .site-nav {
 }
 
 .prev-slide {
-  margin-right: -20px;
+  /* No negative margin to prevent overlapping */
 }
 
 .next-slide {
-  margin-left: -20px;
+  /* No negative margin to prevent overlapping */
 }
 
 @media (max-width: 992px) {
