@@ -914,13 +914,7 @@ body.ltr .site-nav {
   box-shadow: 0 0 10px rgba(68, 233, 255, 0.5);
 }
 
-.prev-slide {
-  /* No negative margin to prevent overlapping */
-}
 
-.next-slide {
-  /* No negative margin to prevent overlapping */
-}
 
 @media (max-width: 992px) {
   .release-list > .release-card {

@@ -317,9 +317,21 @@ const translations = {
 const releaseData = {
   ar: [
     {
-      version: '3.5.3.1',
+      version: '3.5.4',
       badge: 'أحدث إصدار',
       date: 'الآن',
+      title: 'دعم توافق الويندوز وإصلاحات السيريال',
+      bullets: [
+        'إصلاح مشكلة تعطل تشغيل اللعبة نهائياً عند استخدام نظام تشغيل ويندوز باللغة العربية أو أي لغات أخرى غير اللاتينية.',
+        'دعم تشغيل اللعبة لأول مرة عبر تهيئة ملف الإعدادات options.ini تلقائياً وضبط دقة الشاشة.',
+        'إنهاء مشكلة السيريال والتفعيل عبر إصلاح وتوليد مفتاح السيريال في الريجستري تلقائياً وتنسيقه بالشرطات.',
+        'إصلاحات عامة ومعالجة بعض الأخطاء البرمجية لتحسين استقرار وسرعة استجابة اللانشر واللعبة.'
+      ]
+    },
+    {
+      version: '3.5.3.1',
+      badge: 'إصدار سابق',
+      date: 'سابقاً',
       title: 'الملفات الشخصية وإصلاحات الصوت',
       bullets: [
         'أصبح بإمكانك الآن فتح واستعراض الملف الشخصي لأصدقائك مباشرة من قائمة الأصدقاء.',
@@ -408,8 +420,20 @@ const releaseData = {
   ],
   en: [
     {
-      version: '3.5.1.3',
+      version: '3.5.4',
       badge: 'Latest Release',
+      date: 'Now',
+      title: 'Windows Compatibility & Serial Fixes',
+      bullets: [
+        'Fixed game crash on Windows systems with Arabic or other non-Latin languages.',
+        'Resolved first-time launch issues by automatically initializing the options.ini file.',
+        'Automatically repairs and generates the serial key in the registry to prevent startup crashes.',
+        'General bug fixes to improve launcher and game stability.'
+      ]
+    },
+    {
+      version: '3.5.1.3',
+      badge: 'Previous Release',
       date: 'May 2026',
       title: 'ZeroTier & LAN Connection Fixes',
       bullets: [
@@ -445,8 +469,20 @@ const releaseData = {
   ],
   ru: [
     {
-      version: '3.5.1.3',
+      version: '3.5.4',
       badge: 'Последний релиз',
+      date: 'Сейчас',
+      title: 'Совместимость с Windows и исправления',
+      bullets: [
+        'Исправлен сбой игры в системах Windows с арабским или другими нелатинскими языками.',
+        'Решены проблемы с первым запуском благодаря автоматической инициализации options.ini.',
+        'Автоматически восстанавливает и генерирует серийный ключ в реестре.',
+        'Общие исправления для повышения стабильности лаунчера и игры.'
+      ]
+    },
+    {
+      version: '3.5.1.3',
+      badge: 'Предыдущий релиз',
       date: 'май 2026',
       title: 'Исправления подключения ZeroTier и LAN',
       bullets: [
@@ -482,8 +518,20 @@ const releaseData = {
   ],
   fr: [
     {
-      version: '3.5.1.3',
+      version: '3.5.4',
       badge: 'Dernière Version',
+      date: 'Maintenant',
+      title: 'Compatibilité Windows et correctifs',
+      bullets: [
+        'Correction d\'un plantage sur les systèmes Windows avec des langues non latines.',
+        'Résolution des problèmes de premier lancement en initialisant automatiquement options.ini.',
+        'Répare et génère automatiquement la clé de série dans le registre.',
+        'Corrections de bugs pour améliorer la stabilité du lanceur et du jeu.'
+      ]
+    },
+    {
+      version: '3.5.1.3',
+      badge: 'Version Précédente',
       date: 'Mai 2026',
       title: 'Correctifs ZeroTier et LAN',
       bullets: [
@@ -506,8 +554,20 @@ const releaseData = {
   ],
   es: [
     {
-      version: '3.5.1.3',
+      version: '3.5.4',
       badge: 'Última Versión',
+      date: 'Ahora',
+      title: 'Compatibilidad con Windows y correcciones',
+      bullets: [
+        'Se solucionó el bloqueo en sistemas Windows con árabe u otros idiomas no latinos.',
+        'Se resolvieron problemas de primer inicio inicializando automáticamente options.ini.',
+        'Repara y genera automáticamente la clave de serie en el registro.',
+        'Correcciones de errores para mejorar la estabilidad del lanzador y el juego.'
+      ]
+    },
+    {
+      version: '3.5.1.3',
+      badge: 'Versión Anterior',
       date: 'Mayo 2026',
       title: 'Correcciones de ZeroTier y LAN',
       bullets: [
