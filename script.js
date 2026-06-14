@@ -317,9 +317,22 @@ const translations = {
 const releaseData = {
   ar: [
     {
-      version: '3.5.4',
+      version: '3.5.4.1',
       badge: 'أحدث إصدار',
       date: 'الآن',
+      title: 'إضافات وإصلاحات مهمة',
+      bullets: [
+        'أيقونة إشعارات جديدة (الجرس): عرض جميع التنبيهات مع إمكانية قبول أو رفض طلبات الصداقة مباشرة.',
+        'مؤثرات بصرية محسنة (FX): مؤثرات رائعة وعالية الجودة (HD) للصواريخ، الضربات، والانفجارات.',
+        'إصلاح عداد اللاعبين المتصلين: يعرض الآن فقط اللاعبين النشطين داخل اللانشر والمود بدلاً من الإجمالي.',
+        'إصلاح واجهة الدخول: تم حل مشكلة واجهة الدخول والصوت المزعج المصاحب لها.',
+        'إصلاح توافق المسارات: حل مشكلة المسارات عند تشغيل اللعبة على أنظمة ويندوز باللغة العربية.'
+      ]
+    },
+    {
+      version: '3.5.4',
+      badge: 'إصدار سابق',
+      date: 'سابقاً',
       title: 'دعم توافق الويندوز وإصلاحات السيريال',
       bullets: [
         'إصلاح مشكلة تعطل تشغيل اللعبة نهائياً عند استخدام نظام تشغيل ويندوز باللغة العربية أو أي لغات أخرى غير اللاتينية.',
@@ -420,9 +433,22 @@ const releaseData = {
   ],
   en: [
     {
-      version: '3.5.4',
+      version: '3.5.4.1',
       badge: 'Latest Release',
       date: 'Now',
+      title: 'Important Additions & Fixes',
+      bullets: [
+        'New Notifications Bell: Added a bell icon to display all alerts and friend requests, with the ability to accept or decline directly.',
+        'Enhanced VFX: High-quality (HD) visual effects added for missiles, strikes, and explosions.',
+        'Online Players Counter Fix: The counter now displays only active players inside the launcher and mod.',
+        'Login Interface Fix: Fixed the login screen and removed the annoying sound associated with it.',
+        'Path Compatibility Fix: Resolved file and folder path issues when running the game on Arabic Windows systems.'
+      ]
+    },
+    {
+      version: '3.5.4',
+      badge: 'Previous Release',
+      date: 'Previously',
       title: 'Windows Compatibility & Serial Fixes',
       bullets: [
         'Fixed game crash on Windows systems with Arabic or other non-Latin languages.',
@@ -469,9 +495,22 @@ const releaseData = {
   ],
   ru: [
     {
-      version: '3.5.4',
+      version: '3.5.4.1',
       badge: 'Последний релиз',
       date: 'Сейчас',
+      title: 'Важные дополнения и исправления',
+      bullets: [
+        'Новый колокольчик уведомлений: Добавлен значок для отображения всех оповещений и запросов в друзья с возможностью их принятия или отклонения.',
+        'Улучшенные визуальные эффекты (VFX): Добавлены высококачественные (HD) эффекты для ракет, ударов и взрывов.',
+        'Исправление счетчика онлайн-игроков: Счетчик теперь отображает только активных игроков в лаунчере и моде.',
+        'Исправление экрана входа: Исправлен экран входа в систему и удален раздражающий звук.',
+        'Исправление совместимости путей: Решены проблемы с путями к файлам и папкам при запуске игры в арабской Windows.'
+      ]
+    },
+    {
+      version: '3.5.4',
+      badge: 'Предыдущий релиз',
+      date: 'Ранее',
       title: 'Совместимость с Windows и исправления',
       bullets: [
         'Исправлен сбой игры в системах Windows с арабским или другими нелатинскими языками.',
@@ -518,9 +557,22 @@ const releaseData = {
   ],
   fr: [
     {
-      version: '3.5.4',
+      version: '3.5.4.1',
       badge: 'Dernière Version',
       date: 'Maintenant',
+      title: 'Ajouts et correctifs importants',
+      bullets: [
+        'Nouvelle cloche de notifications : Ajout d\'une icône pour afficher les alertes et demandes d\'amis, avec possibilité d\'accepter ou refuser.',
+        'Effets visuels (VFX) améliorés : Effets de haute qualité (HD) ajoutés pour les missiles, frappes et explosions.',
+        'Correction du compteur de joueurs : Le compteur n\'affiche désormais que les joueurs actifs dans le lanceur et le mod.',
+        'Correction de l\'interface de connexion : Écran de connexion réparé et suppression du son gênant.',
+        'Compatibilité des chemins : Résolution des problèmes de chemins de fichiers sur les systèmes Windows en arabe.'
+      ]
+    },
+    {
+      version: '3.5.4',
+      badge: 'Version Précédente',
+      date: 'Précédemment',
       title: 'Compatibilité Windows et correctifs',
       bullets: [
         'Correction d\'un plantage sur les systèmes Windows avec des langues non latines.',
@@ -554,9 +606,22 @@ const releaseData = {
   ],
   es: [
     {
-      version: '3.5.4',
+      version: '3.5.4.1',
       badge: 'Última Versión',
       date: 'Ahora',
+      title: 'Adiciones y correcciones importantes',
+      bullets: [
+        'Nueva campana de notificaciones: Se agregó un ícono para mostrar alertas y solicitudes de amistad, con la capacidad de aceptar o rechazar.',
+        'Efectos visuales (VFX) mejorados: Efectos de alta calidad (HD) para misiles, ataques y explosiones.',
+        'Corrección del contador de jugadores: El contador ahora muestra solo los jugadores activos en el lanzador y el mod.',
+        'Corrección de la pantalla de inicio de sesión: Pantalla de inicio de sesión arreglada y sonido molesto eliminado.',
+        'Compatibilidad de rutas: Se resolvieron los problemas de rutas de archivos al ejecutar el juego en sistemas Windows en árabe.'
+      ]
+    },
+    {
+      version: '3.5.4',
+      badge: 'Versión Anterior',
+      date: 'Anteriormente',
       title: 'Compatibilidad con Windows y correcciones',
       bullets: [
         'Se solucionó el bloqueo en sistemas Windows con árabe u otros idiomas no latinos.',
